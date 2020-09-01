@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.cacib.account.AccountManager;
 import com.cacib.bankkata.Printer;
-import com.cacib.transaction.TransactionRepository;
+import com.cacib.transactions.TransactionRepository;
 
 
 @RunWith(MockitoJUnitRunner.class)

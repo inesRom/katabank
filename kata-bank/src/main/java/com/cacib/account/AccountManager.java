@@ -1,8 +1,9 @@
 package com.cacib.account;
 
-import com.cacib.transaction.TransactionRepository;
+import com.cacib.transactions.TransactionRepository;
 
 public class AccountManager {
+	// The account manager delegate the responsablity to the transactionRepositoy
 	private TransactionRepository transactionRepository;
 	
 	  public AccountManager(TransactionRepository transactionRepository) {
