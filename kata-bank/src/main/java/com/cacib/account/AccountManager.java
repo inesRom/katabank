@@ -16,7 +16,7 @@ public class AccountManager {
 	    }
 
 	    public void withdraw(int  amount) {
-	    	
+	    	transactionRepository.saveWithdraw(amount);
 	    }
 
 	    public void printAccount() {
