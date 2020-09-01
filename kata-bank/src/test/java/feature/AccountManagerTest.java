@@ -23,7 +23,7 @@ public class AccountManagerTest {
 	@Mock OperationManager operationPrinter;
 	@Before
 	public void initialise() {
-		account= new AccountManager(transactionRepository);
+		account= new AccountManager(transactionRepository,operationPrinter);
 	}
 	@Test
 	public void depositTransaction(){

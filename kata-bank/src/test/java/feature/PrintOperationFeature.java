@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.cacib.account.AccountManager;
 import com.cacib.bankkata.Printer;
+import com.cacib.operation.OperationManager;
 import com.cacib.transactions.TransactionRepository;
 
 
@@ -22,7 +23,8 @@ public class PrintOperationFeature {
 	@Before
 	public void initialise() {
 		TransactionRepository transactionRepository = new TransactionRepository();
-		account= new AccountManager(transactionRepository);
+		OperationManager operationManager = new OperationManager();
+		account= new AccountManager(transactionRepository, operationManager);
 	}
 	  @Test
 	public void print_Opeation_History(){
