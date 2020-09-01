@@ -9,10 +9,10 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 
-//import org.mockito.junit.MockitoJUnitRunner;
 
 import com.cacib.account.AccountManager;
 import com.cacib.bankkata.Printer;
+import com.cacib.transaction.TransactionRepository;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -21,7 +21,8 @@ public class PrintOperationFeature {
 	private AccountManager account;
 	@Before
 	public void initialise() {
-		account= new AccountManager();
+		TransactionRepository transactionRepository = new TransactionRepository();
+		account= new AccountManager(transactionRepository);
 	}
 	  @Test
 	public void print_Opeation_History(){
@@ -29,6 +30,7 @@ public class PrintOperationFeature {
 		  account.withdraw(100);
 		  account.deposit(50);
 		  account.printAccount();
+		  // verify sideEffects 
 		  verify(printer).printOperation("DATE | AMOUNT | BALANCE");
 	      verify(printer).printOperation("10/09/2020 | 50.00 | 1400.00");
 	      verify(printer).printOperation("02/09/2020 | -100.00 | 900.00");

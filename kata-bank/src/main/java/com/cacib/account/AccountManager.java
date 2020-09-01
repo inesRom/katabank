@@ -1,11 +1,17 @@
 package com.cacib.account;
 
-
+import com.cacib.transaction.TransactionRepository;
 
 public class AccountManager {
-	  public void deposit(int  amount) {
+	private TransactionRepository transactionRepository;
+	
+	  public AccountManager(TransactionRepository transactionRepository) {
+		  this.transactionRepository = transactionRepository;
+	}
+
+	public void deposit(int  amount) {
 		 
-		  throw new UnsupportedOperationException(); 
+		transactionRepository.saveDeposit(amount);
 	     
 	    }
 
