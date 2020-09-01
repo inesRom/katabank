@@ -22,5 +22,9 @@ public class AccountManagerTest {
 		account.deposit(500);
 		verify(transactionRepository).saveDeposit(500);
 	}
-
+	@Test
+	public void withdrawTransaction(){
+		account.withdraw(500);
+		verify(transactionRepository).saveWithdraw(500);
+	}
 }
