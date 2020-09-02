@@ -20,7 +20,9 @@ public class TransactionRepository {
 	}
 
 	public void saveWithdraw(int amount) {
-		throw new UnsupportedOperationException();	
+		// ! amount should be negatif.
+		Transaction toWithdrawTransaction = new Transaction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),-amount);
+		inMemoryTransactions.add(toWithdrawTransaction);	
 		}
 	public List<Transaction> getAllTransactions(){
 	return inMemoryTransactions;
