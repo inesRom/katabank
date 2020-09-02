@@ -31,12 +31,21 @@ public class TransactionRepositoryTest {
 	@Test
 	public void createDepositTransaction() {
 		// if i create a transaction , i ill a get an list of  transactions of one item
-		// with the today date
-//		
+		// with the today date	
 		transactionRepository.saveDeposit(500);
 		List<Transaction> transactions = transactionRepository.getAllTransactions();
 		assertThat(transactions.size(),is(1));
 		assertThat(transactions.get(0),is(new Transaction(localDate,500)));
+		
+	}
+	@Test
+	public void createWithdrawTransaction() {
+		// if i create a transaction , i ill a get an list of  transactions of one item
+		// with the today date
+		transactionRepository.saveWithdraw(500);
+		List<Transaction> transactions = transactionRepository.getAllTransactions();
+		assertThat(transactions.size(),is(1));
+		assertThat(transactions.get(0),is(new Transaction(localDate,-500)));
 		
 	}
 
