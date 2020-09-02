@@ -11,10 +11,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 
 import com.cacib.account.AccountManager;
-import com.cacib.bankkata.Printer;
 import com.cacib.operation.OperationManager;
 import com.cacib.transactions.TransactionRepository;
-
+// Acceptence test : use the real  collaborator dont mock anything
+import com.cacib.utils.Printer;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PrintOperationFeature {

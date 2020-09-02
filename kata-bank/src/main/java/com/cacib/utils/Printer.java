@@ -1,4 +1,4 @@
-package com.cacib.bankkata;
+package com.cacib.utils;
 
 public class Printer {
 	public void printOperation(String myAccountLine) {

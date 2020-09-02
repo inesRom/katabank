@@ -37,7 +37,7 @@ public class AccountManagerTest {
 	}
 	@Test
 	public void checkOperations() {
-		List<Transaction> transactions= Arrays.asList(new Transaction());
+		List<Transaction> transactions= Arrays.asList(new Transaction("02/09/2020",500));
 		given(transactionRepository.getAllTransactions()).willReturn(transactions);
 		//when i call printAccount methode from account , I expect transactionRepository method 
 		//(alltransaction()) to return a list of transactions
