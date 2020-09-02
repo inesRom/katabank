@@ -35,7 +35,7 @@ public class TransactionRepositoryTest {
 		transactionRepository.saveDeposit(500);
 		List<Transaction> transactions = transactionRepository.getAllTransactions();
 		assertThat(transactions.size(),is(1));
-		assertThat(transactions.get(0),is(new Transaction(localDate,500)));
+		assertThat(transactions.get(0),is(new Transaction(localDate,500,1000)));
 		
 	}
 	@Test
@@ -45,7 +45,7 @@ public class TransactionRepositoryTest {
 		transactionRepository.saveWithdraw(500);
 		List<Transaction> transactions = transactionRepository.getAllTransactions();
 		assertThat(transactions.size(),is(1));
-		assertThat(transactions.get(0),is(new Transaction(localDate,-500)));
+		assertThat(transactions.get(0),is(new Transaction(localDate,-500,1000)));
 		
 	}
 

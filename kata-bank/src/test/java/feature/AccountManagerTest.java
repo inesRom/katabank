@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.cacib.account.AccountManager;
-import com.cacib.operation.OperationManager;
+import com.cacib.operation.OperationEditor;
 import com.cacib.transactions.Transaction;
 import com.cacib.transactions.TransactionRepository;
 import static org.mockito.BDDMockito.*;
@@ -23,10 +23,10 @@ public class AccountManagerTest {
 
 	@Mock TransactionRepository transactionRepository;
 	private AccountManager account ;
-	@Mock OperationManager operationPrinter;
+	@Mock OperationEditor operationEditor;
 	@Before
 	public void initialise() {
-		account= new AccountManager(transactionRepository,operationPrinter);
+		account= new AccountManager(transactionRepository,operationEditor);
 	}
 	@Test
 	public void depositTransaction(){
@@ -40,12 +40,12 @@ public class AccountManagerTest {
 	}
 	@Test
 	public void checkOperations() {
-		List<Transaction> transactions= Arrays.asList(new Transaction(localDate,500));
+		List<Transaction> transactions= Arrays.asList(new Transaction(localDate,500,1000));
 		given(transactionRepository.getAllTransactions()).willReturn(transactions);
 		//when i call printAccount methode from account , I expect transactionRepository method 
 		//(alltransaction()) to return a list of transactions
-		account.printAccount();
+		account.editAccount();
 		// Verify operationPrinter class was cold with transactions that came from the repository
-		verify(operationPrinter).show(transactions);
+		verify(operationEditor).edit(transactions);
 	}
 }

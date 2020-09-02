@@ -1,30 +1,46 @@
 package com.cacib.account;
 
-import com.cacib.operation.OperationManager;
+import com.cacib.operation.OperationEditor;
 import com.cacib.transactions.TransactionRepository;
 
+/**
+ * @author romdhani
+ * 
+ *
+ */
 public class AccountManager {
 	// The account manager delegate the responsablity to the transactionRepositoy
 	private TransactionRepository transactionRepository;
-	private OperationManager operationManager ;
-	
-	  public AccountManager(TransactionRepository transactionRepository, OperationManager operationManager) {
-		  this.transactionRepository = transactionRepository;
-		  this.operationManager =operationManager;
+	private OperationEditor operationEditor;
+
+	public AccountManager(TransactionRepository transactionRepository, OperationEditor operationEditor) {
+		this.transactionRepository = transactionRepository;
+		this.operationEditor = operationEditor;
 	}
 
-	public void deposit(int  amount) {
-		 
+	/**
+	 * @param amount call repository to add deposit transaction
+	 */
+	public void deposit(int amount) {
+
 		transactionRepository.saveDeposit(amount);
-	     
-	    }
 
-	    public void withdraw(int  amount) {
-	    	transactionRepository.saveWithdraw(amount);
-	    }
+	}
 
-	    public void printAccount() {
-	    	operationManager.show(transactionRepository.getAllTransactions());
-	    }
+	/**
+	 * @param amount call repository to add withdraw transaction
+	 */
+	public void withdraw(int amount) {
+		transactionRepository.saveWithdraw(amount);
+	}
+
+	/**
+	 *
+	 * call editor to print all transactions
+	 */
+	public void editAccount() {
+
+		operationEditor.edit(transactionRepository.getAllTransactions());
+	}
 
 }
