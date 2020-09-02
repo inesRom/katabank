@@ -20,9 +20,10 @@ import com.cacib.utils.Printer;
 public class PrintOperationFeature {
 	@Mock Printer printer;
 	private AccountManager account;
+	private String localDate;
 	@Before
 	public void initialise() {
-		TransactionRepository transactionRepository = new TransactionRepository();
+		TransactionRepository transactionRepository = new TransactionRepository(localDate);
 		OperationManager operationManager = new OperationManager();
 		account= new AccountManager(transactionRepository, operationManager);
 	}

@@ -10,13 +10,13 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.cacib.transactions.Transaction;
 import com.cacib.transactions.TransactionRepository;
 
-import static org.mockito.BDDMockito.*;
+
 @RunWith(MockitoJUnitRunner.class)
 public class TransactionRepositoryTest {
 	private  TransactionRepository transactionRepository;
@@ -26,7 +26,7 @@ public class TransactionRepositoryTest {
 
 	@Before
 	public void initialise() {
-		transactionRepository= new TransactionRepository();
+		transactionRepository= new TransactionRepository(localDate);
 	}
 	@Test
 	public void createDepositTransaction() {
@@ -36,12 +36,9 @@ public class TransactionRepositoryTest {
 		transactionRepository.saveDeposit(500);
 		List<Transaction> transactions = transactionRepository.getAllTransactions();
 		assertThat(transactions.size(),is(1));
-		assertThat(transactions.get(0),is(transaction(localDate,500)));
+		assertThat(transactions.get(0),is(new Transaction(localDate,500)));
 		
 	}
-	private Transaction transaction(String date , int amount) {
-		return new Transaction(date, amount);
-		
-	}
+
 
 }
