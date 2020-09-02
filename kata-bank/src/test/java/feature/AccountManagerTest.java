@@ -1,6 +1,8 @@
 package feature;
 import static org.mockito.Mockito.verify;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +19,8 @@ import com.cacib.transactions.TransactionRepository;
 import static org.mockito.BDDMockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class AccountManagerTest {
-	
+	public static final String localDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
 	@Mock TransactionRepository transactionRepository;
 	private AccountManager account ;
 	@Mock OperationManager operationPrinter;
@@ -37,7 +40,7 @@ public class AccountManagerTest {
 	}
 	@Test
 	public void checkOperations() {
-		List<Transaction> transactions= Arrays.asList(new Transaction("02/09/2020",500));
+		List<Transaction> transactions= Arrays.asList(new Transaction(localDate,500));
 		given(transactionRepository.getAllTransactions()).willReturn(transactions);
 		//when i call printAccount methode from account , I expect transactionRepository method 
 		//(alltransaction()) to return a list of transactions
